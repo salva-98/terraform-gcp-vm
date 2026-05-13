@@ -50,4 +50,9 @@ resource "google_compute_instance" "hermes_vm_instance" {
   metadata = {
     enable-oslogin = "TRUE"
   }
+
+  service_account {
+    email  = "hermes-personal-sa@chrome-sublime-331617.iam.gserviceaccount.com"
+    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
+  }
 }
