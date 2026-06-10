@@ -27,32 +27,3 @@ resource "google_compute_instance" "hermes_vm_instance_main" {
     enable-oslogin = "TRUE"
   }
 }
-
-resource "google_compute_instance" "hermes_vm_instance" {
-  name         = "hermes-personal-vm"
-  machine_type = "e2-medium"
-  zone         = "us-central1-a"
-
-  boot_disk {
-    initialize_params {
-      image = "debian-cloud/debian-12"
-      size = 30
-      type = "pd-standard"
-    }
-  }
-
-  network_interface {
-    network = "default"
-    access_config {
-    }
-  }
-
-  metadata = {
-    enable-oslogin = "TRUE"
-  }
-
-  service_account {
-    email  = "hermes-personal-sa@chrome-sublime-331617.iam.gserviceaccount.com"
-    scopes = ["https://www.googleapis.com/auth/cloud-platform"]
-  }
-}
